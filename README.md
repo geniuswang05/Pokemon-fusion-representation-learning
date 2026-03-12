@@ -20,7 +20,7 @@ Below are example reconstructions produced by the trained ConvVAE model.
 
 The top row shows the **original** Pokémon fusion images, and the bottom row shows the **reconstructed** outputs from the latent representation.
 <p align="center">
-<img src="reconstruction.png" width="50%">
+<img src="reconstructions.png" width="70%">
 </p>
 
 # Model Architecture
