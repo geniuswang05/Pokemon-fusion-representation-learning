@@ -15,6 +15,13 @@ Deep representation learning aims to learn compressed features that retain meani
 
 In this project, we train a **Convolutional Variational Autoencoder (ConvVAE)** to encode Pokémon fusion images into a **low-dimensional latent representation**, which can then be used for reconstruction and downstream classification.
 
+### Results
+Below are example reconstructions produced by the trained ConvVAE model.
+
+The top row shows the **original** Pokémon fusion images, and the bottom row shows the **reconstructed** outputs from the latent representation.
+<p align="center">
+<img src="reconstruction.png" width="50%">
+</p>
 
 # Model Architecture
 
@@ -23,7 +30,6 @@ The model is implemented in **PyTorch** and follows a convolutional VAE design.
 ### Encoder
 
 The encoder progressively downsamples the image while increasing the number of channels:
-
 
 3 → 112 → 224 → 448 → 448
 
@@ -38,17 +44,13 @@ The decoder reconstructs the image from the latent representation using:
 
 - upsampling layers
 - convolution layers
-- multiple **Residual Blocks** for refinement
+- multiple Residual Blocks for refinement
 
 Final output is passed through a Sigmoid layer to produce normalized images.
 
 ### Latent Representation
 
-The latent bottleneck is implemented using latent feature maps with channel size:
-
-
-latent_channels = 32
-
+The latent bottleneck is implemented using latent feature maps with channel size: latent_channels = 32
 
 The representation is also used for classification through a linear probing head.
 
@@ -78,7 +80,7 @@ log(classification_loss)
 
 β * KL_divergence
 
-This objective encourages the model to learn **useful latent representations while maintaining reconstruction quality**.
+This objective encourages the model to learn useful latent representations while maintaining reconstruction quality.
 
 # Dataset
 
@@ -88,10 +90,5 @@ Each data sample contains:
 
 - Image tensor
 - Pokémon type label
-
-The dataset is stored in a compressed numpy format:
-
-train.npz
-
 
 Due to file size constraints, the dataset is **not included in this repository**.
